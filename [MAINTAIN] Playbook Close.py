@@ -151,13 +151,13 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    formatted_data_value = container.get("formatted_data", None)
+    formatted_data___value = container.get("formatted_data__", None)
 
     parameters = []
 
-    if formatted_data_value is not None:
+    if formatted_data___value is not None:
         parameters.append({
-            "body": formatted_data_value,
+            "body": formatted_data___value,
             "location": "/playbook_run",
             "verify_certificate": False,
         })

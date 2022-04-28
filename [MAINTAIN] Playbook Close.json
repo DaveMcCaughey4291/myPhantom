@@ -80,7 +80,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "2b9072543a5040e6c4c8225f422cd81802c42ea9",
+            "hash": "8028aa93e774c7451efefcd8d19ad74b6b356760",
             "nodes": {
                 "0": {
                     "data": {
@@ -315,7 +315,7 @@
                         "functionName": "post_data_1",
                         "id": "7",
                         "parameters": {
-                            "body": "format_json_for_container:formatted_data",
+                            "body": "format_json_for_container:formatted_data.*",
                             "location": "/playbook_run",
                             "verify_certificate": false
                         },
@@ -415,7 +415,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T13:25:02.830032+00:00",
+    "create_time": "2022-04-28T13:31:39.474121+00:00",
     "draft_mode": false,
     "labels": [
         "*"
