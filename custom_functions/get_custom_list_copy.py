@@ -20,57 +20,14 @@ def get_custom_list_copy(list_name=None, **kwargs):
     list_of_items = []
     
     # Build url to get custom list ID
-    url = phantom.build_phantom_rest_url('decided_list')
-    # Build parameters
-    params = [('_filter_name__icontains', "\""+list_name+"\"")]
+    success, message, list_data = phantom.get_list(list_name=list_name)
     
-    phantom.debug(params)
-    
-    response = phantom.requests.get(url, params=params, verify=False)
-    
-    phantom.debug(response.text)
-    
-    # Try and parse the response
-    try:
-        data = response.json['data'][0]
-        
-        custom_list_id = data['id']
-        
-    except Exception as e:
-        phantom.debug(f'Failed to get decided_list.  Response from server: {e}')
+    if not success:
+        phantom.debug(f'Failed to get decided_list.  Response from server: {message}')
         outputs = {
             "list_of_items": [],
             "status": "failure",
-            "message": str(e)
-        }
-        return outputs
-        
-    # Get custom list contents
-    
-    # Build URL to get contents
-    url = phantom.build_phantom_rest_url('decided_list', custom_list_id)
-    # Build params
-    params = [
-        (
-            "page_size", 0
-        )
-    ]
-    
-    phantom.debug(params)
-    
-    response = phantom.requests.get(url, params=params, verify=False)
-    phantom.debug(response.text)
-    
-    # Parse the response
-    try:
-        list_data = response.json['content']
-        
-    except Exception as e:
-        phantom.debug(f'Failed to get list contents.  Response from server: {e}')
-        outputs = {
-            "list_of_items": [],
-            "status": "failed",
-            "message": str(e)
+            "message": message
         }
         return outputs
         
