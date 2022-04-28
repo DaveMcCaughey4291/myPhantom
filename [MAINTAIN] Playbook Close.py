@@ -22,7 +22,7 @@ def get_custom_list_copy_1(action=None, success=None, container=None, results=No
     parameters = []
 
     parameters.append({
-        "list_name": "test_lists",
+        "list_name": "test_list",
     })
 
     ################################################################################

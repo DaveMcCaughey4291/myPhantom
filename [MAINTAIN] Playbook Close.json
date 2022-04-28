@@ -80,7 +80,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "00311c542015ef84a35ca75f59193492f1061502",
+            "hash": "2b9072543a5040e6c4c8225f422cd81802c42ea9",
             "nodes": {
                 "0": {
                     "data": {
@@ -151,7 +151,7 @@
                         "utilityType": "custom_function",
                         "values": {
                             "get_custom_list_copy": {
-                                "list_name": "test_lists"
+                                "list_name": "test_list"
                             }
                         }
                     },
@@ -415,7 +415,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T11:37:46.874643+00:00",
+    "create_time": "2022-04-28T13:25:02.830032+00:00",
     "draft_mode": false,
     "labels": [
         "*"
