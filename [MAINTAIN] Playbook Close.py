@@ -141,13 +141,13 @@ def format_json_for_container(action=None, success=None, container=None, results
 
     phantom.format(container=container, template=template, parameters=parameters, name="format_json_for_container")
 
-    post_data_1(container=container)
+    run_playbook(container=container)
 
     return
 
 
-def post_data_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("post_data_1() called")
+def run_playbook(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("run_playbook() called")
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
@@ -172,7 +172,7 @@ def post_data_1(action=None, success=None, container=None, results=None, handle=
     ## Custom Code End
     ################################################################################
 
-    phantom.act("post data", parameters=parameters, name="post_data_1", assets=["phantom_http"])
+    phantom.act("post data", parameters=parameters, name="run_playbook", assets=["phantom_http"])
 
     return
 

@@ -80,7 +80,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "8028aa93e774c7451efefcd8d19ad74b6b356760",
+            "hash": "4285afbc7cfd28c280dd260e70c652d5098dcc1a",
             "nodes": {
                 "0": {
                     "data": {
@@ -303,6 +303,8 @@
                         "action": "post data",
                         "actionType": "generic",
                         "advanced": {
+                            "customName": "run playbook",
+                            "customNameId": 0,
                             "join": []
                         },
                         "connector": "HTTP",
@@ -312,7 +314,7 @@
                         "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
                         "connectorVersion": "v1",
                         "functionId": 1,
-                        "functionName": "post_data_1",
+                        "functionName": "run_playbook",
                         "id": "7",
                         "parameters": {
                             "body": "format_json_for_container:formatted_data.*",
@@ -415,7 +417,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T13:31:39.474121+00:00",
+    "create_time": "2022-04-28T13:36:30.007656+00:00",
     "draft_mode": false,
     "labels": [
         "*"
