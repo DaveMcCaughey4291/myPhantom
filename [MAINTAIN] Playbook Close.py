@@ -69,7 +69,7 @@ def get_close_playbook(action=None, success=None, container=None, results=None, 
     parameters = []
 
     parameters.append({
-        "location": "playbook?_filter_name='[Quick Close] Phishing No Threat'",
+        "location": "playbook?_filter_name='[Quick Close] No Threat'",
         "verify_certificate": False,
     })
 

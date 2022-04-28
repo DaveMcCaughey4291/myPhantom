@@ -80,7 +80,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "fd6c272c15723b3fdd4c7e2f0429da9349f7a7c9",
+            "hash": "e3a1e1840c98995335c41ca0bfe51386b4110ad9",
             "nodes": {
                 "0": {
                     "data": {
@@ -95,7 +95,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1020,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -227,7 +227,7 @@
                         "functionName": "get_close_playbook",
                         "id": "4",
                         "parameters": {
-                            "location": "playbook?_filter_name='[Quick Close] Phishing No Threat'",
+                            "location": "playbook?_filter_name='[Quick Close] No Threat'",
                             "verify_certificate": false
                         },
                         "requiredParameters": [
@@ -414,7 +414,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T09:49:50.944624+00:00",
+    "create_time": "2022-04-28T11:12:18.636484+00:00",
     "draft_mode": false,
     "labels": [
         "*"
