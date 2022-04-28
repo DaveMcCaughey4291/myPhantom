@@ -43,11 +43,9 @@ def get_custom_list_copy(list_name=None, **kwargs):
             "status": "failure",
             "message": str(e)
         }
+        return outputs
         
     # Get custom list contents
-    
-    # Check for previous success
-    assert response.status_code == phantom.requests.codes.ok
     
     # Build URL to get contents
     url = phantom.build_phantom_rest_url('decided_list', custom_list_id)
@@ -74,12 +72,9 @@ def get_custom_list_copy(list_name=None, **kwargs):
             "status": "failed",
             "message": str(e)
         }
+        return outputs
         
     # Remove blank or null entries from list
-    
-    # Check for success
-    
-    assert response.status_code == phantom.requests.codes.ok
     
     for custom_list_items in list_data:
         for item in custom_list_items:
