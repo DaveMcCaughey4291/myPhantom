@@ -47,7 +47,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["get_custom_list_copy_1:custom_function_result.success", "==", True]
+            ["get_custom_list_copy_1:custom_function_result.data.status", "==", "success"]
         ])
 
     # call connected blocks if condition 1 matched

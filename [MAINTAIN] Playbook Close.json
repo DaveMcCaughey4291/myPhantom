@@ -80,7 +80,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e3a1e1840c98995335c41ca0bfe51386b4110ad9",
+            "hash": "00311c542015ef84a35ca75f59193492f1061502",
             "nodes": {
                 "0": {
                     "data": {
@@ -95,7 +95,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 1020,
-                    "y": 419.9999999999998
+                    "y": 419.99999999999966
                 },
                 "1": {
                     "data": {
@@ -172,8 +172,8 @@
                                     {
                                         "conditionIndex": 0,
                                         "op": "==",
-                                        "param": "get_custom_list_copy_1:custom_function_result.success",
-                                        "value": "True"
+                                        "param": "get_custom_list_copy_1:custom_function_result.data.status",
+                                        "value": "success"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -185,6 +185,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -414,7 +415,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T11:12:18.636484+00:00",
+    "create_time": "2022-04-28T11:37:46.874643+00:00",
     "draft_mode": false,
     "labels": [
         "*"
