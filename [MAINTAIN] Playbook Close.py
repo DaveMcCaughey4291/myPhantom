@@ -86,9 +86,6 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
 
     get_custom_list_copy_1_data_list_of_items = [item[0] for item in get_custom_list_copy_1__result]
 
-    run_playbook__status = None
-    run_playbook__message = None
-
     ################################################################################
     ## Custom Code Start
     ################################################################################
@@ -102,31 +99,12 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
     for item in get_custom_list_copy_1_data_list_of_items[0]:
         container = phantom.get_container(item)
         phantom.debug(f'Found container: {container}')
-        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
-        if success:
-            num_success += 1
-            phantom.debug(f'Successfully ran playbook on container with run id: {run_id}')
-        else:
-            phantom.debug(f'Failed to run playbook.  Message from Phantom: {message}')
-            num_failed += 1
-            
-    if num_failed > 0:
-        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'
-        status = 'failure'
-    else:
-        message = f'Successfully ran playbook on {num_success} containers.'
-        status = 'success'
-    outputs = {
-        "status": status,
-        "message": message
-    }
+        run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
+        
 
     ################################################################################
     ## Custom Code End
     ################################################################################
-
-    phantom.save_run_data(key="run_playbook:status", value=json.dumps(run_playbook__status))
-    phantom.save_run_data(key="run_playbook:message", value=json.dumps(run_playbook__message))
 
     return
 
