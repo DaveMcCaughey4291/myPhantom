@@ -1,0 +1,51 @@
+{
+    "create_time": "2022-04-29T10:55:48.942545+00:00",
+    "custom_function_id": "51bbb0fecb9cc6d1fa531d4f34f1ec03ed614e6b",
+    "description": "Run the specified playbook on the given containers",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "A list of container IDs",
+            "input_type": "list",
+            "name": "container_list",
+            "placeholder": "list_of_containers"
+        },
+        {
+            "contains_type": [],
+            "description": "Name of the playbook to run",
+            "input_type": "item",
+            "name": "playbook_name",
+            "placeholder": "playbook_name"
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "status",
+            "description": "The status of the action, success or failed"
+        },
+        {
+            "contains_type": [],
+            "data_path": "message",
+            "description": "Status message"
+        },
+        {
+            "contains_type": [],
+            "data_path": "total_success",
+            "description": "Number of successful playbook executions"
+        },
+        {
+            "contains_type": [],
+            "data_path": "playbook_run_ids",
+            "description": "A list of playbook run IDs for the successful executions"
+        },
+        {
+            "contains_type": [],
+            "data_path": "failure_list",
+            "description": "A list of JSON objects with the container ID and error message"
+        }
+    ],
+    "platform_version": "5.3.1.84890",
+    "python_version": "3"
+}
