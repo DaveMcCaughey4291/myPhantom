@@ -59,7 +59,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e4ed3be23f492c98b0d6d07157d25aba330e192e",
+            "hash": "bc037ae9131295ada46744e7e2ca128fdb984759",
             "nodes": {
                 "0": {
                     "data": {
@@ -112,7 +112,7 @@
                     "errors": {},
                     "id": "10",
                     "type": "code",
-                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        if not container:\n            phantom.debug(f'No container {item} found')\n        else:\n            phantom.debug(f'Found container: {container}')\n            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n            if not run_id:\n                phantom.debug(f'Unable to start playbook on conainer {item}')\n            else:\n                phantom.debug(f'Successfully started playbook on container {item}.  Run ID: {run_id}')\n        \n\n",
+                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        if not container:\n            phantom.debug(f'No container {item} found')\n        else:\n            phantom.debug(f'Found container: {container}')\n            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threatss', container=container)\n            if not run_id:\n                phantom.debug(f'Unable to start playbook on conainer {item}')\n            else:\n                phantom.debug(f'Successfully started playbook on container {item}.  Run ID: {run_id}')\n        \n\n",
                     "x": 340,
                     "y": 476
                 },
@@ -285,7 +285,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T15:55:42.316841+00:00",
+    "create_time": "2022-04-29T15:56:18.063714+00:00",
     "draft_mode": false,
     "labels": [
         "*"

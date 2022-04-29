@@ -102,7 +102,7 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
             phantom.debug(f'No container {item} found')
         else:
             phantom.debug(f'Found container: {container}')
-            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
+            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threatss', container=container)
             if not run_id:
                 phantom.debug(f'Unable to start playbook on conainer {item}')
             else:
