@@ -50,9 +50,16 @@
                     "sourcePort": "3_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_1",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "262c46e368d920e242687125254f2dbe44bf0ba1",
+            "hash": "40d639be3da302e248f461ea95aadf3fc1744c70",
             "nodes": {
                 "0": {
                     "data": {
@@ -108,7 +115,7 @@
                     "errors": {},
                     "id": "10",
                     "type": "code",
-                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        phantom.debug(f'Found container: {container}')\n        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n        if success:\n            num_success += 1\n            phantom.debug(f'Successfully ran playbook on container with run id: {run_id}')\n        else:\n            phantom.debug(f'Failed to run playbook.  Message from Phantom: {message}')\n            num_failed += 1\n            \n    if num_failed > 0:\n        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'\n        status = 'failure'\n    else:\n        message = f'Successfully ran playbook on {num_success} containers.'\n        status = 'success'\n    outputs = {\n        \"status\": status,\n        \"message\": message\n    }\n\n",
+                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        phantom.debug(f'Found container: {container}')\n        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container, callback=decision_1)\n        if success:\n            num_success += 1\n            phantom.debug(f'Successfully ran playbook on container with run id: {run_id}')\n        else:\n            phantom.debug(f'Failed to run playbook.  Message from Phantom: {message}')\n            num_failed += 1\n            \n    if num_failed > 0:\n        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'\n        status = 'failure'\n    else:\n        message = f'Successfully ran playbook on {num_success} containers.'\n        status = 'success'\n    outputs = {\n        \"status\": status,\n        \"message\": message\n    }\n\n",
                     "x": 340,
                     "y": 476
                 },
@@ -281,7 +288,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T15:33:02.633628+00:00",
+    "create_time": "2022-04-29T15:37:36.501989+00:00",
     "draft_mode": false,
     "labels": [
         "*"
