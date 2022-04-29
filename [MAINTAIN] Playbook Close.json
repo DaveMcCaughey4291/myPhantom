@@ -23,46 +23,6 @@
                 {
                     "conditions": [
                         {
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_3_to_port_4",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "4",
-                    "targetPort": "4_in"
-                },
-                {
-                    "id": "port_4_to_port_5",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "5",
-                    "targetPort": "5_in"
-                },
-                {
-                    "id": "port_5_to_port_6",
-                    "sourceNode": "5",
-                    "sourcePort": "5_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
-                    "id": "port_6_to_port_7",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
-                },
-                {
-                    "id": "port_7_to_port_1",
-                    "sourceNode": "7",
-                    "sourcePort": "7_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
-                },
-                {
-                    "conditions": [
-                        {
                             "index": 1
                         }
                     ],
@@ -78,9 +38,28 @@
                     "sourcePort": "8_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_3_to_port_9",
+                    "sourceNode": "3",
+                    "sourcePort": "3_out",
+                    "targetNode": "9",
+                    "targetPort": "9_in"
+                },
+                {
+                    "id": "port_9_to_port_1",
+                    "sourceNode": "9",
+                    "sourcePort": "9_out",
+                    "targetNode": "1",
+                    "targetPort": "1_in"
                 }
             ],
-            "hash": "4285afbc7cfd28c280dd260e70c652d5098dcc1a",
+            "hash": "8ffaf9c89cb8e20876633abeaf3cbf7cf3599115",
             "nodes": {
                 "0": {
                     "data": {
@@ -95,7 +74,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 190,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -111,8 +90,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 190,
-                    "y": 1116
+                    "x": 270,
+                    "y": 640
                 },
                 "2": {
                     "data": {
@@ -206,142 +185,8 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
-                    "x": 250,
+                    "x": 500,
                     "y": 296
-                },
-                "4": {
-                    "data": {
-                        "action": "get data",
-                        "actionType": "investigate",
-                        "advanced": {
-                            "customName": "get close playbook",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "connector": "HTTP",
-                        "connectorConfigs": [
-                            "phantom_http"
-                        ],
-                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "get_close_playbook",
-                        "id": "4",
-                        "parameters": {
-                            "location": "playbook?_filter_name='[Quick Close] No Threat'",
-                            "verify_certificate": false
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "location"
-                            },
-                            {
-                                "data_type": "boolean",
-                                "field": "verify_certificate"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "4",
-                    "type": "action",
-                    "x": 0,
-                    "y": 476
-                },
-                "5": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format_list_of_items_and_playbook_ids",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_list_of_items_and_playbook_ids",
-                        "id": "5",
-                        "inputParameters": [
-                            "get_custom_list_copy_1:custom_function_result.data.list_of_items",
-                            "get_close_playbook:action_result.data.*.parsed_response_body.data.*.id"
-                        ],
-                        "outputVariables": [
-                            "list_of_items",
-                            "list_of_playbook_id"
-                        ],
-                        "type": "code"
-                    },
-                    "errors": {},
-                    "id": "5",
-                    "type": "code",
-                    "x": 0,
-                    "y": 624
-                },
-                "6": {
-                    "data": {
-                        "advanced": {
-                            "customName": "format JSON for container",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "functionId": 1,
-                        "functionName": "format_json_for_container",
-                        "id": "6",
-                        "parameters": [
-                            "format_list_of_items_and_playbook_ids:custom_function:list_of_items",
-                            "format_list_of_items_and_playbook_ids:custom_function:list_of_playbook_id"
-                        ],
-                        "template": "%%\n{{\n    \"container_id\": {0},\n    \"playbook_id\": {1},\n    \"scope\": \"all\",\n    \"run\": true\n}}\n%%\n",
-                        "type": "format"
-                    },
-                    "errors": {},
-                    "id": "6",
-                    "type": "format",
-                    "x": 0,
-                    "y": 788
-                },
-                "7": {
-                    "data": {
-                        "action": "post data",
-                        "actionType": "generic",
-                        "advanced": {
-                            "customName": "run playbook",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "connector": "HTTP",
-                        "connectorConfigs": [
-                            "phantom_http"
-                        ],
-                        "connectorId": "290b7499-0374-4930-9cdc-5e9b05d65827",
-                        "connectorVersion": "v1",
-                        "functionId": 1,
-                        "functionName": "run_playbook",
-                        "id": "7",
-                        "parameters": {
-                            "body": "format_json_for_container:formatted_data.*",
-                            "location": "/playbook_run",
-                            "verify_certificate": false
-                        },
-                        "requiredParameters": [
-                            {
-                                "data_type": "string",
-                                "field": "body"
-                            },
-                            {
-                                "data_type": "string",
-                                "field": "location"
-                            },
-                            {
-                                "data_type": "boolean",
-                                "field": "verify_certificate"
-                            }
-                        ],
-                        "type": "action"
-                    },
-                    "errors": {},
-                    "id": "7",
-                    "type": "action",
-                    "x": 0,
-                    "y": 960
                 },
                 "8": {
                     "data": {
@@ -404,8 +249,66 @@
                     "errors": {},
                     "id": "8",
                     "type": "utility",
-                    "x": 340,
-                    "y": 952
+                    "x": 250,
+                    "y": 476
+                },
+                "9": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "run_playbook",
+                            "repoName": "myPhantom"
+                        },
+                        "functionId": 3,
+                        "functionName": "run_playbook_3",
+                        "id": "9",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "run_playbook": {
+                                "description": "Run the specified playbook on the given containers",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A list of container IDs",
+                                        "inputType": "list",
+                                        "label": "container_list",
+                                        "name": "container_list",
+                                        "placeholder": "list_of_containers",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Name of the playbook to run",
+                                        "inputType": "item",
+                                        "label": "playbook_name",
+                                        "name": "playbook_name",
+                                        "placeholder": "playbook_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "run_playbook",
+                                "name": "run_playbook"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "run_playbook": {
+                                "container_list": "get_custom_list_copy_1:custom_function_result.data.list_of_items",
+                                "playbook_name": "[Quick Close] No Threat"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "9",
+                    "type": "utility",
+                    "x": 590,
+                    "y": 484
                 }
             },
             "notes": ""
@@ -417,7 +320,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T08:34:46.137012+00:00",
+    "create_time": "2022-04-29T10:59:01.453274+00:00",
     "draft_mode": false,
     "labels": [
         "*"
