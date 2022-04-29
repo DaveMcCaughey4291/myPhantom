@@ -7,6 +7,13 @@
             "description": "",
             "edges": [
                 {
+                    "id": "port_5_to_port_8",
+                    "sourceNode": "5",
+                    "sourcePort": "5_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
                     "id": "port_0_to_port_2",
                     "sourceNode": "0",
                     "sourcePort": "0_out",
@@ -80,7 +87,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "4285afbc7cfd28c280dd260e70c652d5098dcc1a",
+            "hash": "28abf95cc5229c33bab1f804789ef4e0cf8edcfc",
             "nodes": {
                 "0": {
                     "data": {
@@ -94,8 +101,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 1020,
-                    "y": 419.99999999999966
+                    "x": 190,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -111,8 +118,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 1180,
-                    "y": 1520
+                    "x": 190,
+                    "y": 1100
                 },
                 "2": {
                     "data": {
@@ -158,8 +165,8 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
-                    "x": 1000,
-                    "y": 567.9999999999999
+                    "x": 170,
+                    "y": 148
                 },
                 "3": {
                     "data": {
@@ -206,8 +213,8 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
-                    "x": 1410,
-                    "y": 715.9999999999999
+                    "x": 250,
+                    "y": 296
                 },
                 "4": {
                     "data": {
@@ -246,8 +253,8 @@
                     "errors": {},
                     "id": "4",
                     "type": "action",
-                    "x": 1160,
-                    "y": 895.9999999999999
+                    "x": 10,
+                    "y": 476
                 },
                 "5": {
                     "data": {
@@ -272,8 +279,8 @@
                     "errors": {},
                     "id": "5",
                     "type": "code",
-                    "x": 1160,
-                    "y": 1044
+                    "x": 10,
+                    "y": 624
                 },
                 "6": {
                     "data": {
@@ -295,8 +302,8 @@
                     "errors": {},
                     "id": "6",
                     "type": "format",
-                    "x": 1160,
-                    "y": 1208
+                    "x": 0,
+                    "y": 788
                 },
                 "7": {
                     "data": {
@@ -340,8 +347,8 @@
                     "errors": {},
                     "id": "7",
                     "type": "action",
-                    "x": 1160,
-                    "y": 1372
+                    "x": 0,
+                    "y": 952
                 },
                 "8": {
                     "data": {
@@ -404,8 +411,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "utility",
-                    "x": 1500,
-                    "y": 895.9999999999999
+                    "x": 340,
+                    "y": 788
                 }
             },
             "notes": ""
@@ -417,7 +424,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-28T13:36:30.007656+00:00",
+    "create_time": "2022-04-29T08:33:32.668616+00:00",
     "draft_mode": false,
     "labels": [
         "*"
