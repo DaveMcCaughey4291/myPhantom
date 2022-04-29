@@ -45,21 +45,28 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_3_to_port_9",
+                    "id": "port_3_to_port_10",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
-                    "targetNode": "9",
-                    "targetPort": "9_in"
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 },
                 {
-                    "id": "port_9_to_port_1",
-                    "sourceNode": "9",
-                    "sourcePort": "9_out",
+                    "id": "port_10_to_port_14",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "14",
+                    "targetPort": "14_in"
+                },
+                {
+                    "id": "port_14_to_port_1",
+                    "sourceNode": "14",
+                    "sourcePort": "14_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "c660e90c90204350099a76d3cd89ec73125ece5e",
+            "hash": "d5b8b59f7b79f97f03653c7b38908f680504a15b",
             "nodes": {
                 "0": {
                     "data": {
@@ -74,7 +81,7 @@
                     "id": "0",
                     "type": "start",
                     "x": 190,
-                    "y": -6.394884621840902e-14
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -90,8 +97,95 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 270,
-                    "y": 640
+                    "x": 190,
+                    "y": 788
+                },
+                "10": {
+                    "data": {
+                        "advanced": {
+                            "customName": "Run playbook",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "functionId": 1,
+                        "functionName": "run_playbook",
+                        "id": "10",
+                        "inputParameters": [
+                            "get_custom_list_copy_1:custom_function_result.data.list_of_items"
+                        ],
+                        "outputVariables": [
+                            "status",
+                            "message"
+                        ],
+                        "type": "code"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "code",
+                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    for item in get_custom_list_copy_1_data_list_of_items:\n        container = phantom.get_container(item)\n        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n        if success:\n            num_success += 1\n        else:\n            num_failed += 1\n            \n    if num_failed > 0:\n        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'\n        status = 'failure'\n    else:\n        message = f'Successfully ran playbook on {num_success} containers.'\n        status = 'success'\n    outputs = {\n        \"status\": status,\n        \"message\": message\n    }\n\n",
+                    "x": 340,
+                    "y": 476
+                },
+                "14": {
+                    "data": {
+                        "advanced": {
+                            "join": []
+                        },
+                        "functionId": 5,
+                        "functionName": "add_comment_5",
+                        "id": "14",
+                        "selectMore": false,
+                        "tab": "apis",
+                        "type": "utility",
+                        "utilities": {
+                            "comment": {
+                                "description": "",
+                                "fields": [
+                                    {
+                                        "description": "",
+                                        "label": "comment",
+                                        "name": "comment",
+                                        "placeholder": "Enter a comment",
+                                        "renderType": "datapath",
+                                        "required": true
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "container",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "author",
+                                        "required": false
+                                    },
+                                    {
+                                        "hidden": true,
+                                        "name": "trace",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "add comment",
+                                "name": "comment"
+                            }
+                        },
+                        "utilityType": "api",
+                        "values": {
+                            "comment": {
+                                "_internal": [
+                                    "container",
+                                    "author",
+                                    "trace"
+                                ],
+                                "comment": "run_playbook:custom_function:message"
+                            }
+                        }
+                    },
+                    "errors": {},
+                    "id": "14",
+                    "type": "utility",
+                    "x": 340,
+                    "y": 632
                 },
                 "2": {
                     "data": {
@@ -185,7 +279,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
-                    "x": 500,
+                    "x": 250,
                     "y": 296
                 },
                 "8": {
@@ -249,68 +343,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "utility",
-                    "x": 250,
-                    "y": 476
-                },
-                "9": {
-                    "data": {
-                        "advanced": {
-                            "customName": "run quick close playbook",
-                            "customNameId": 0,
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "run_playbook",
-                            "repoName": "myPhantom"
-                        },
-                        "functionId": 3,
-                        "functionName": "run_quick_close_playbook",
-                        "id": "9",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "run_playbook": {
-                                "description": "Run the specified playbook on the given containers",
-                                "fields": [
-                                    {
-                                        "dataTypes": [],
-                                        "description": "A list of container IDs",
-                                        "inputType": "list",
-                                        "label": "container_list",
-                                        "name": "container_list",
-                                        "placeholder": "list_of_containers",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "Name of the playbook to run",
-                                        "inputType": "item",
-                                        "label": "playbook_name",
-                                        "name": "playbook_name",
-                                        "placeholder": "playbook_name",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "run_playbook",
-                                "name": "run_playbook"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "run_playbook": {
-                                "container_list": "get_custom_list_copy_1:custom_function_result.data.list_of_items",
-                                "playbook_name": "[Quick Close] No Threat"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "9",
-                    "type": "utility",
-                    "x": 590,
-                    "y": 484
+                    "x": 0,
+                    "y": 624
                 }
             },
             "notes": ""
@@ -322,7 +356,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T11:05:10.858568+00:00",
+    "create_time": "2022-04-29T15:25:10.520224+00:00",
     "draft_mode": false,
     "labels": [
         "*"

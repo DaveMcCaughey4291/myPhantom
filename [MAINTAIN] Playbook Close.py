@@ -52,7 +52,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        run_quick_close_playbook(action=action, success=success, container=container, results=results, handle=handle)
+        run_playbook(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
@@ -79,19 +79,59 @@ def custom_function_failed_comment(action=None, success=None, container=None, re
     return
 
 
-def run_quick_close_playbook(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("run_quick_close_playbook() called")
+def run_playbook(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("run_playbook() called")
 
     get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
 
     get_custom_list_copy_1_data_list_of_items = [item[0] for item in get_custom_list_copy_1__result]
 
-    parameters = []
+    run_playbook__status = None
+    run_playbook__message = None
 
-    parameters.append({
-        "container_list": get_custom_list_copy_1_data_list_of_items,
-        "playbook_name": "[Quick Close] No Threat",
-    })
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Setup variables
+    num_success = 0
+    num_failed = 0
+    
+    for item in get_custom_list_copy_1_data_list_of_items:
+        container = phantom.get_container(item)
+        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
+        if success:
+            num_success += 1
+        else:
+            num_failed += 1
+            
+    if num_failed > 0:
+        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'
+        status = 'failure'
+    else:
+        message = f'Successfully ran playbook on {num_success} containers.'
+        status = 'success'
+    outputs = {
+        "status": status,
+        "message": message
+    }
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.save_run_data(key="run_playbook:status", value=json.dumps(run_playbook__status))
+    phantom.save_run_data(key="run_playbook:message", value=json.dumps(run_playbook__message))
+
+    add_comment_5(container=container)
+
+    return
+
+
+def add_comment_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_5() called")
+
+    run_playbook__message = json.loads(phantom.get_run_data(key="run_playbook:message"))
 
     ################################################################################
     ## Custom Code Start
@@ -103,7 +143,7 @@ def run_quick_close_playbook(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_quick_close_playbook")
+    phantom.comment(container=container, comment=run_playbook__message)
 
     return
 
