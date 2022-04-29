@@ -50,23 +50,9 @@
                     "sourcePort": "3_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
-                },
-                {
-                    "id": "port_10_to_port_14",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
-                    "targetNode": "14",
-                    "targetPort": "14_in"
-                },
-                {
-                    "id": "port_14_to_port_1",
-                    "sourceNode": "14",
-                    "sourcePort": "14_out",
-                    "targetNode": "1",
-                    "targetPort": "1_in"
                 }
             ],
-            "hash": "d5b8b59f7b79f97f03653c7b38908f680504a15b",
+            "hash": "6d91ab88640d3d83eeda347907d3ec314c730f8f",
             "nodes": {
                 "0": {
                     "data": {
@@ -122,70 +108,9 @@
                     "errors": {},
                     "id": "10",
                     "type": "code",
-                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    for item in get_custom_list_copy_1_data_list_of_items:\n        container = phantom.get_container(item)\n        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n        if success:\n            num_success += 1\n        else:\n            num_failed += 1\n            \n    if num_failed > 0:\n        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'\n        status = 'failure'\n    else:\n        message = f'Successfully ran playbook on {num_success} containers.'\n        status = 'success'\n    outputs = {\n        \"status\": status,\n        \"message\": message\n    }\n\n",
+                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n        if success:\n            num_success += 1\n        else:\n            num_failed += 1\n            \n    if num_failed > 0:\n        message = f'One or more playbook executions failed to run. Success: {num_success} Failed: {num_failed}'\n        status = 'failure'\n    else:\n        message = f'Successfully ran playbook on {num_success} containers.'\n        status = 'success'\n    outputs = {\n        \"status\": status,\n        \"message\": message\n    }\n\n",
                     "x": 340,
                     "y": 476
-                },
-                "14": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "functionId": 5,
-                        "functionName": "add_comment_5",
-                        "id": "14",
-                        "selectMore": false,
-                        "tab": "apis",
-                        "type": "utility",
-                        "utilities": {
-                            "comment": {
-                                "description": "",
-                                "fields": [
-                                    {
-                                        "description": "",
-                                        "label": "comment",
-                                        "name": "comment",
-                                        "placeholder": "Enter a comment",
-                                        "renderType": "datapath",
-                                        "required": true
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "container",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "author",
-                                        "required": false
-                                    },
-                                    {
-                                        "hidden": true,
-                                        "name": "trace",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "add comment",
-                                "name": "comment"
-                            }
-                        },
-                        "utilityType": "api",
-                        "values": {
-                            "comment": {
-                                "_internal": [
-                                    "container",
-                                    "author",
-                                    "trace"
-                                ],
-                                "comment": "run_playbook:custom_function:message"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "14",
-                    "type": "utility",
-                    "x": 340,
-                    "y": 632
                 },
                 "2": {
                     "data": {
@@ -356,7 +281,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T15:25:10.520224+00:00",
+    "create_time": "2022-04-29T15:27:09.069856+00:00",
     "draft_mode": false,
     "labels": [
         "*"

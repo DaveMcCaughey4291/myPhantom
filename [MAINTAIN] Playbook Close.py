@@ -97,7 +97,7 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
     num_success = 0
     num_failed = 0
     
-    for item in get_custom_list_copy_1_data_list_of_items:
+    for item in get_custom_list_copy_1_data_list_of_items[0]:
         container = phantom.get_container(item)
         success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
         if success:
@@ -122,28 +122,6 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
 
     phantom.save_run_data(key="run_playbook:status", value=json.dumps(run_playbook__status))
     phantom.save_run_data(key="run_playbook:message", value=json.dumps(run_playbook__message))
-
-    add_comment_5(container=container)
-
-    return
-
-
-def add_comment_5(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("add_comment_5() called")
-
-    run_playbook__message = json.loads(phantom.get_run_data(key="run_playbook:message"))
-
-    ################################################################################
-    ## Custom Code Start
-    ################################################################################
-
-    # Write your custom code here...
-
-    ################################################################################
-    ## Custom Code End
-    ################################################################################
-
-    phantom.comment(container=container, comment=run_playbook__message)
 
     return
 
