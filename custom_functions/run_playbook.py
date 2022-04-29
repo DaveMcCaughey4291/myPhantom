@@ -25,8 +25,9 @@ def run_playbook(container_list=None, playbook_name=None, **kwargs):
     run_ids = []
     failure_list = []
     
-    for item in container_list:
-        success, message, run_id = phantom.playbook(playbook=playbook_name, container = item)
+    for item in container_list[0]:
+        container = phantom.get_container(item)
+        success, message, run_id = phantom.playbook(playbook=playbook_name, container=container)
         if success:
             run_ids.append(run_id)
             num_success += 1
