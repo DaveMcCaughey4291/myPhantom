@@ -56,7 +56,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         return
 
     # check for 'else' condition 2
-    join_custom_function_failed_comment(action=action, success=success, container=container, results=results, handle=handle)
+    custom_function_failed_comment(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -113,7 +113,6 @@ def format_list_of_items_and_playbook_ids(action=None, success=None, container=N
     phantom.save_run_data(key="format_list_of_items_and_playbook_ids:list_of_items", value=json.dumps(format_list_of_items_and_playbook_ids__list_of_items))
     phantom.save_run_data(key="format_list_of_items_and_playbook_ids:list_of_playbook_id", value=json.dumps(format_list_of_items_and_playbook_ids__list_of_playbook_id))
 
-    join_custom_function_failed_comment(container=container)
     format_json_for_container(container=container)
 
     return
@@ -174,16 +173,6 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
     ################################################################################
 
     phantom.act("post data", parameters=parameters, name="run_playbook", assets=["phantom_http"])
-
-    return
-
-
-def join_custom_function_failed_comment(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("join_custom_function_failed_comment() called")
-
-    if phantom.completed(custom_function_names=["get_custom_list_copy_1"], action_names=["get_close_playbook"]):
-        # call connected block "custom_function_failed_comment"
-        custom_function_failed_comment(container=container, handle=handle)
 
     return
 
