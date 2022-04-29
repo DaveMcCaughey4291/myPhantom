@@ -97,12 +97,17 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
     num_success = 0
     num_failed = 0
     
+    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')
+    
     for item in get_custom_list_copy_1_data_list_of_items[0]:
         container = phantom.get_container(item)
+        phantom.debug(f'Found container: {container}')
         success, message, run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
         if success:
             num_success += 1
+            phantom.debug(f'Successfully ran playbook on container with run id: {run_id}')
         else:
+            phantom.debug(f'Failed to run playbook.  Message from Phantom: {message}')
             num_failed += 1
             
     if num_failed > 0:
