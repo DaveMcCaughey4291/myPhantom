@@ -98,8 +98,15 @@ def run_playbook(action=None, success=None, container=None, results=None, handle
     
     for item in get_custom_list_copy_1_data_list_of_items[0]:
         container = phantom.get_container(item)
-        phantom.debug(f'Found container: {container}')
-        run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
+        if not container:
+            phantom.debug(f'No container {item} found')
+        else:
+            phantom.debug(f'Found container: {container}')
+            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
+            if not run_id:
+                phantom.debug(f'Unable to start playbook on conainer {item}')
+            else:
+                phantom.debug(f'Successfully started playbook on container {item}.  Run ID: {run_id}')
         
 
     ################################################################################
