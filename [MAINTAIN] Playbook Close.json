@@ -59,7 +59,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "8ffaf9c89cb8e20876633abeaf3cbf7cf3599115",
+            "hash": "c660e90c90204350099a76d3cd89ec73125ece5e",
             "nodes": {
                 "0": {
                     "data": {
@@ -255,6 +255,8 @@
                 "9": {
                     "data": {
                         "advanced": {
+                            "customName": "run quick close playbook",
+                            "customNameId": 0,
                             "join": []
                         },
                         "customFunction": {
@@ -263,7 +265,7 @@
                             "repoName": "myPhantom"
                         },
                         "functionId": 3,
-                        "functionName": "run_playbook_3",
+                        "functionName": "run_quick_close_playbook",
                         "id": "9",
                         "selectMore": false,
                         "type": "utility",
@@ -320,7 +322,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T10:59:01.453274+00:00",
+    "create_time": "2022-04-29T11:05:10.858568+00:00",
     "draft_mode": false,
     "labels": [
         "*"

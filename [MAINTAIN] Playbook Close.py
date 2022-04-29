@@ -52,7 +52,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        run_playbook_3(action=action, success=success, container=container, results=results, handle=handle)
+        run_quick_close_playbook(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
@@ -79,8 +79,8 @@ def custom_function_failed_comment(action=None, success=None, container=None, re
     return
 
 
-def run_playbook_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("run_playbook_3() called")
+def run_quick_close_playbook(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("run_quick_close_playbook() called")
 
     get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
 
@@ -103,7 +103,7 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_playbook_3")
+    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_quick_close_playbook")
 
     return
 
