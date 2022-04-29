@@ -19,7 +19,7 @@ def get_custom_list_copy(list_name=None, **kwargs):
     # Prepare list
     list_of_items = []
     
-    # Build url to get custom list ID
+    # Get the custom list data
     success, message, list_data = phantom.get_list(list_name=list_name)
     
     if not success:
