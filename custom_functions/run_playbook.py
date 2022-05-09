@@ -54,6 +54,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
                 "scope": "new",
                 "run": True
             }
+        phantom.debug(f'Making a HTTP POST request to {runUrl} with parameters: {params}')
         response = phantom.requests.post(runUrl, json=params, verify=False)
         phantom.debug(f'Phantom returned status code: {response.status_code} and content: {response.text}')
         if response.status_code == phantom.requests.codes.ok:
