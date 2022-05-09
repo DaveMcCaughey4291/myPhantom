@@ -52,7 +52,7 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        run_playbook(action=action, success=success, container=container, results=results, handle=handle)
+        run_playbook_3(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
@@ -79,39 +79,33 @@ def custom_function_failed_comment(action=None, success=None, container=None, re
     return
 
 
-def run_playbook(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("run_playbook() called")
+def run_playbook_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("run_playbook_3() called")
 
     get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
 
     get_custom_list_copy_1_data_list_of_items = [item[0] for item in get_custom_list_copy_1__result]
 
+    parameters = []
+
+    parameters.append({
+        "container_list": get_custom_list_copy_1_data_list_of_items,
+        "playbook_name": "[Quick Close] No Threat",
+        "scope": "all",
+        "scope_list": None,
+    })
+
     ################################################################################
     ## Custom Code Start
     ################################################################################
 
-    # Setup variables
-    num_success = 0
-    num_failed = 0
-    
-    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')
-    
-    for item in get_custom_list_copy_1_data_list_of_items[0]:
-        container = phantom.get_container(item)
-        if not container:
-            phantom.debug(f'No container {item} found')
-        else:
-            phantom.debug(f'Found container: {container}')
-            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)
-            if not run_id:
-                phantom.debug(f'Unable to start playbook on conainer {item}')
-            else:
-                phantom.debug(f'Successfully started playbook on container {item}.  Run ID: {run_id}')
-        
+    # Write your custom code here...
 
     ################################################################################
     ## Custom Code End
     ################################################################################
+
+    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_playbook_3")
 
     return
 

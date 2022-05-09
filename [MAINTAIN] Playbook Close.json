@@ -45,21 +45,21 @@
                             "index": 0
                         }
                     ],
-                    "id": "port_3_to_port_10",
+                    "id": "port_3_to_port_11",
                     "sourceNode": "3",
                     "sourcePort": "3_out",
-                    "targetNode": "10",
-                    "targetPort": "10_in"
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 },
                 {
-                    "id": "port_10_to_port_1",
-                    "sourceNode": "10",
-                    "sourcePort": "10_out",
+                    "id": "port_11_to_port_1",
+                    "sourceNode": "11",
+                    "sourcePort": "11_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "e4ed3be23f492c98b0d6d07157d25aba330e192e",
+            "hash": "53ab4492f4ec6dd14c9289d9a00aa083cd3b00f2",
             "nodes": {
                 "0": {
                     "data": {
@@ -91,30 +91,87 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 190,
-                    "y": 788
+                    "y": 640
                 },
-                "10": {
+                "11": {
                     "data": {
                         "advanced": {
-                            "customName": "Run playbook",
-                            "customNameId": 0,
                             "join": []
                         },
-                        "functionId": 1,
-                        "functionName": "run_playbook",
-                        "id": "10",
-                        "inputParameters": [
-                            "get_custom_list_copy_1:custom_function_result.data.list_of_items"
-                        ],
-                        "outputVariables": [],
-                        "type": "code"
+                        "customFunction": {
+                            "draftMode": false,
+                            "name": "run_playbook",
+                            "repoName": "myPhantom"
+                        },
+                        "functionId": 3,
+                        "functionName": "run_playbook_3",
+                        "id": "11",
+                        "selectMore": false,
+                        "type": "utility",
+                        "utilities": {
+                            "run_playbook": {
+                                "description": "Run the specified playbook on the given containers",
+                                "fields": [
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A list of container I",
+                                        "inputType": "list",
+                                        "label": "container_list",
+                                        "name": "container_list",
+                                        "placeholder": "list_of_containers",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Name of the playbook to run",
+                                        "inputType": "item",
+                                        "label": "playbook_name",
+                                        "name": "playbook_name",
+                                        "placeholder": "playbook_name",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "Scope of the playbook execution - should be \"all\" or \"new\"",
+                                        "inputType": "item",
+                                        "label": "scope",
+                                        "name": "scope",
+                                        "placeholder": "all",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    },
+                                    {
+                                        "dataTypes": [],
+                                        "description": "A list of artifact IDs to run the playbook against",
+                                        "inputType": "list",
+                                        "label": "scope_list",
+                                        "name": "scope_list",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
+                                    }
+                                ],
+                                "label": "run_playbook",
+                                "name": "run_playbook"
+                            }
+                        },
+                        "utilityType": "custom_function",
+                        "values": {
+                            "run_playbook": {
+                                "container_list": "get_custom_list_copy_1:custom_function_result.data.list_of_items",
+                                "playbook_name": "[Quick Close] No Threat",
+                                "scope": "all",
+                                "scope_list": null
+                            }
+                        }
                     },
                     "errors": {},
-                    "id": "10",
-                    "type": "code",
-                    "userCode": "\n    # Setup variables\n    num_success = 0\n    num_failed = 0\n    \n    phantom.debug(f'Inputs: {get_custom_list_copy_1_data_list_of_items}')\n    \n    for item in get_custom_list_copy_1_data_list_of_items[0]:\n        container = phantom.get_container(item)\n        if not container:\n            phantom.debug(f'No container {item} found')\n        else:\n            phantom.debug(f'Found container: {container}')\n            run_id = phantom.playbook(playbook='myPhantom/[Quick Close] No Threat', container=container)\n            if not run_id:\n                phantom.debug(f'Unable to start playbook on conainer {item}')\n            else:\n                phantom.debug(f'Successfully started playbook on container {item}.  Run ID: {run_id}')\n        \n\n",
+                    "id": "11",
+                    "type": "utility",
                     "x": 340,
-                    "y": 476
+                    "y": 484
                 },
                 "2": {
                     "data": {
@@ -273,7 +330,7 @@
                     "id": "8",
                     "type": "utility",
                     "x": 0,
-                    "y": 624
+                    "y": 476
                 }
             },
             "notes": ""
@@ -285,7 +342,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-04-29T15:57:27.795161+00:00",
+    "create_time": "2022-05-09T10:34:43.941737+00:00",
     "draft_mode": false,
     "labels": [
         "*"
