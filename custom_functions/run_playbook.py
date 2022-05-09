@@ -29,6 +29,13 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
     
     for item in container_list[0]:
         container = phantom.get_container(item)
+        if not container:
+            num_failed += 1
+            fail_item = {
+                "containerid": item,
+                "message": f"No container with ID {item} found"
+            }
+            continue
         container_id = container['id']
         runUrl = phantom.build_phantom_rest_url("playbook_run")
         if scope:
