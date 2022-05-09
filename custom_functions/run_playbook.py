@@ -29,11 +29,12 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
     
     for item in container_list[0]:
         container = phantom.get_container(item)
+        container_id = container['id']
         runUrl = phantom.build_phantom_rest_url("playbook_run")
         if scope:
             # Scope set to string
             params = {
-                "container_id": container,
+                "container_id": container_id,
                 "playbook_id": playbook_name,
                 "scope": scope,
                 "run": True
@@ -41,7 +42,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
         elif scope_list:
             # Scope set to list of integers
             params = {
-                "container_id": container,
+                "container_id": container_id,
                 "playbook_id": playbook_name,
                 "scope": scope_list,
                 "run": True
@@ -49,7 +50,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
         else:
             # No scope provided so default to "new"
             params = {
-                "container_id": container,
+                "container_id": container_id,
                 "playbook_id": playbook_name,
                 "scope": "new",
                 "run": True
