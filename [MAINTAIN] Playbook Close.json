@@ -59,7 +59,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "53ab4492f4ec6dd14c9289d9a00aa083cd3b00f2",
+            "hash": "bdcb33b638daf3784f10eb2c661344da177aa0ad",
             "nodes": {
                 "0": {
                     "data": {
@@ -161,7 +161,7 @@
                         "values": {
                             "run_playbook": {
                                 "container_list": "get_custom_list_copy_1:custom_function_result.data.list_of_items",
-                                "playbook_name": "[Quick Close] No Threat",
+                                "playbook_name": "myPhantom/[Quick Close] No Threat",
                                 "scope": "all",
                                 "scope_list": null
                             }
@@ -342,7 +342,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-05-09T10:34:43.941737+00:00",
+    "create_time": "2022-05-09T10:37:02.135298+00:00",
     "draft_mode": false,
     "labels": [
         "*"

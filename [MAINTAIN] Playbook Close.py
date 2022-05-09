@@ -90,7 +90,7 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
 
     parameters.append({
         "container_list": get_custom_list_copy_1_data_list_of_items,
-        "playbook_name": "[Quick Close] No Threat",
+        "playbook_name": "myPhantom/[Quick Close] No Threat",
         "scope": "all",
         "scope_list": None,
     })
