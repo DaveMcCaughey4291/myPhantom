@@ -1,10 +1,12 @@
-def run_playbook(container_list=None, playbook_name=None, **kwargs):
+def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list=None, **kwargs):
     """
     Run the specified playbook on the given containers
     
     Args:
-        container_list: A list of container IDs
+        container_list: A list of container I
         playbook_name: Name of the playbook to run
+        scope: Scope of the playbook execution - should be "all" or "new"
+        scope_list: A list of artifact IDs to run the playbook against
     
     Returns a JSON-serializable object that implements the configured data paths:
         status: The status of the action, success or failed
@@ -27,15 +29,43 @@ def run_playbook(container_list=None, playbook_name=None, **kwargs):
     
     for item in container_list[0]:
         container = phantom.get_container(item)
-        success, message, run_id = phantom.playbook(playbook=playbook_name, container=container)
-        if success:
+        runUrl = phantom.build_phantom_rest_url("playbook_run")
+        if scope:
+            # Scope set to string
+            params = {
+                "container_id": container,
+                "playbook_id": playbook_name,
+                "scope": scope,
+                "run": True
+            }
+        elif scope_list:
+            # Scope set to list of integers
+            params = {
+                "container_id": container,
+                "playbook_id": playbook_name,
+                "scope": scope_list,
+                "run": True
+            }
+        else:
+            # No scope provided so default to "new"
+            params = {
+                "container_id": container,
+                "playbook_id": playbook_name,
+                "scope": "new",
+                "run": True
+            }
+        response = phantom.requests.post(runUrl, json=params)
+        phantom.debug(f'Phantom returned status code: {response.status_code} and content: {response.text}')
+        if response.status_code == phantom.requests.codes.ok:
+            responseJSON = response.json()
+            run_id = responseJSON['playbook_run_id']
             run_ids.append(run_id)
             num_success += 1
         else:
             num_failed += 1
             fail_item = {
                 "containerid": item,
-                "message": message
+                "message": response.text
             }
             failure_list.append(fail_item)
             

@@ -1,12 +1,12 @@
 {
-    "create_time": "2022-04-29T11:04:42.731824+00:00",
+    "create_time": "2022-05-09T10:06:27.033704+00:00",
     "custom_function_id": "51bbb0fecb9cc6d1fa531d4f34f1ec03ed614e6b",
     "description": "Run the specified playbook on the given containers",
     "draft_mode": false,
     "inputs": [
         {
             "contains_type": [],
-            "description": "A list of container IDs",
+            "description": "A list of container I",
             "input_type": "list",
             "name": "container_list",
             "placeholder": "list_of_containers"
@@ -17,6 +17,20 @@
             "input_type": "item",
             "name": "playbook_name",
             "placeholder": "playbook_name"
+        },
+        {
+            "contains_type": [],
+            "description": "Scope of the playbook execution - should be \"all\" or \"new\"",
+            "input_type": "item",
+            "name": "scope",
+            "placeholder": "all"
+        },
+        {
+            "contains_type": [],
+            "description": "A list of artifact IDs to run the playbook against",
+            "input_type": "list",
+            "name": "scope_list",
+            "placeholder": ""
         }
     ],
     "outputs": [
