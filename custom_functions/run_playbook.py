@@ -35,6 +35,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
                 "containerid": item,
                 "message": f"No container with ID {item} found"
             }
+            failure_list.append(fail_item)
             continue
         container_id = container['id']
         runUrl = phantom.build_phantom_rest_url("playbook_run")
