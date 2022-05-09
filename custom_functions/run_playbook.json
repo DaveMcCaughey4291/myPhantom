@@ -1,7 +1,7 @@
 {
-    "create_time": "2022-05-09T11:02:36.328584+00:00",
+    "create_time": "2022-05-09T13:34:07.919200+00:00",
     "custom_function_id": "51bbb0fecb9cc6d1fa531d4f34f1ec03ed614e6b",
-    "description": "Run the specified playbook on the given containers",
+    "description": "Run the specified playbook on the given container(s).  You can use either the single value \"container\" or the list option \"container_list\" for multiple containers.  The scope parameter can be \"all\" or \"new\".  If not supplied then \"new\" will be assumed.",
     "draft_mode": false,
     "inputs": [
         {
@@ -30,6 +30,15 @@
             "description": "A list of artifact IDs to run the playbook against",
             "input_type": "list",
             "name": "scope_list",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [
+                "phantom container id"
+            ],
+            "description": "Single container ID",
+            "input_type": "item",
+            "name": "container",
             "placeholder": ""
         }
     ],
