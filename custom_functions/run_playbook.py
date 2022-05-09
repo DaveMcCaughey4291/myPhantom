@@ -84,6 +84,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
         "playbook_run_ids": run_ids,
         "failure_list": failure_list
     }
+    phantom.debug(f'Function completed with output: {outputs}')
         
     # Return a JSON-serializable object
     assert json.dumps(outputs)  # Will raise an exception if the :outputs: object is not JSON-serializable
