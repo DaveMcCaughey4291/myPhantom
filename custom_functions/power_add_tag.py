@@ -41,8 +41,8 @@ def power_add_tag(tag_list=None, container_id=None, container_list=None, **kwarg
     
     if container_id:
         # Single other container ID provided
-        phantom.debug(f'Adding tags "{tag_list}" to container {container_id}')
-        success, message = phantom.add_tags(tags=tag_list, container=container_id)
+        phantom.debug(f'Adding tags "{tags}" to container {container_id}')
+        success, message = phantom.add_tags(tags=tags, container=container_id)
         if success:
             success_count += 1
         else:
@@ -50,9 +50,9 @@ def power_add_tag(tag_list=None, container_id=None, container_list=None, **kwarg
             phantom.debug(f'Failed to add tags to container {container_id}.  Message from Phantom: {message}')
     elif container_list:
         # List of container IDs provided
-        phantom.debug(f'Adding tags "{tag_list}" to containers: {container_list}')
+        phantom.debug(f'Adding tags "{tags}" to containers: {container_list}')
         for container in container_list:
-            success, message = phantom.add_tags(tags=tag_list, container=container)
+            success, message = phantom.add_tags(tags=tags, container=container)
             if success:
                 success_count += 1
             else:
@@ -60,8 +60,8 @@ def power_add_tag(tag_list=None, container_id=None, container_list=None, **kwarg
                 phantom.debug(f'Failed to add tags to container {container}.  Message from Phantom: {message}')
     else:
         # No conainer supplied - assuming current container
-        phantom.debug(f'Adding tags "{tag_list}" to current container')
-        success, message = phantom.add_tags(tags=tag_list)
+        phantom.debug(f'Adding tags "{tags}" to current container')
+        success, message = phantom.add_tags(tags=tags)
         if success:
             success_count += 1
         else:
