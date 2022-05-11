@@ -89,10 +89,10 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
     parameters = []
 
     parameters.append({
-        "container_list": get_custom_list_copy_1_data_list_of_items,
-        "playbook_name": "myPhantom/[Quick Close] No Threat",
         "scope": "all",
         "scope_list": None,
+        "playbook_name": "myPhantom/[Quick Close] No Threat",
+        "container_list": get_custom_list_copy_1_data_list_of_items,
     })
 
     ################################################################################
@@ -105,7 +105,37 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
     ## Custom Code End
     ################################################################################
 
-    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_playbook_3")
+    phantom.custom_function(custom_function="myPhantom/run_playbook", parameters=parameters, name="run_playbook_3", callback=power_add_tag_4)
+
+    return
+
+
+def power_add_tag_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("power_add_tag_4() called")
+
+    get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
+
+    get_custom_list_copy_1_data_list_of_items = [item[0] for item in get_custom_list_copy_1__result]
+
+    parameters = []
+
+    parameters.append({
+        "tag_list": "[\"linux\",\"windows\"]",
+        "container_id": None,
+        "container_list": get_custom_list_copy_1_data_list_of_items,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="myPhantom/power_add_tag", parameters=parameters, name="power_add_tag_4")
 
     return
 
