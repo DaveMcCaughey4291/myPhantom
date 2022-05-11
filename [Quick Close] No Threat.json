@@ -14,21 +14,14 @@
                     "targetPort": "2_in"
                 },
                 {
-                    "id": "port_2_to_port_3",
+                    "id": "port_2_to_port_1",
                     "sourceNode": "2",
                     "sourcePort": "2_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
-                    "id": "port_3_to_port_1",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "3a434077a5c61b9dbc01029b3e1542b2f1d4641f",
+            "hash": "9cbda3baa04e3a049f2e08226f6be8c9530087c7",
             "nodes": {
                 "0": {
                     "data": {
@@ -42,8 +35,8 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 19.999999999999986,
-                    "y": -6.394884621840902e-14
+                    "x": 20,
+                    "y": 0
                 },
                 "1": {
                     "data": {
@@ -60,7 +53,7 @@
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
                     "x": 20,
-                    "y": 440
+                    "y": 296
                 },
                 "2": {
                     "data": {
@@ -157,77 +150,6 @@
                     "type": "utility",
                     "x": 0,
                     "y": 148
-                },
-                "3": {
-                    "data": {
-                        "advanced": {
-                            "join": []
-                        },
-                        "customFunction": {
-                            "draftMode": false,
-                            "name": "power_add_tag",
-                            "repoName": "myPhantom"
-                        },
-                        "functionId": 2,
-                        "functionName": "power_add_tag_2",
-                        "id": "3",
-                        "selectMore": false,
-                        "type": "utility",
-                        "utilities": {
-                            "power_add_tag": {
-                                "description": "Allows adding multiple tags to a container or containers.  If no container(s) are provided then the current container is assumed.",
-                                "fields": [
-                                    {
-                                        "dataTypes": [],
-                                        "description": "A mandatory list of tag strings",
-                                        "inputType": "list",
-                                        "label": "tag_list",
-                                        "name": "tag_list",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [
-                                            "phantom container id"
-                                        ],
-                                        "description": "An optional ID of another container",
-                                        "inputType": "item",
-                                        "label": "container_id",
-                                        "name": "container_id",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    },
-                                    {
-                                        "dataTypes": [],
-                                        "description": "An optional list of container IDs",
-                                        "inputType": "list",
-                                        "label": "container_list",
-                                        "name": "container_list",
-                                        "placeholder": "",
-                                        "renderType": "datapath",
-                                        "required": false
-                                    }
-                                ],
-                                "label": "power_add_tag",
-                                "name": "power_add_tag"
-                            }
-                        },
-                        "utilityType": "custom_function",
-                        "values": {
-                            "power_add_tag": {
-                                "container_id": null,
-                                "container_list": null,
-                                "tag_list": "[\"linux\",\"windows\"]"
-                            }
-                        }
-                    },
-                    "errors": {},
-                    "id": "3",
-                    "type": "utility",
-                    "x": 0,
-                    "y": 296
                 }
             },
             "notes": ""
@@ -248,7 +170,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-05-11T11:12:25.426007+00:00",
+    "create_time": "2022-05-11T11:26:45.175271+00:00",
     "draft_mode": false,
     "labels": [
         "*"
