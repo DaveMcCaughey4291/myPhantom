@@ -51,7 +51,7 @@ def power_add_tag(tag_list=None, container_id=None, container_list=None, **kwarg
     elif container_list:
         # List of container IDs provided
         phantom.debug(f'Adding tags "{tags}" to containers: {container_list}')
-        for container in container_list:
+        for container in container_list[0]:
             success, message = phantom.add_tags(tags=tags, container=container)
             if success:
                 success_count += 1
