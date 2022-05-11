@@ -1,0 +1,45 @@
+{
+    "create_time": "2022-05-11T10:47:16.372410+00:00",
+    "custom_function_id": "0c048e0656e35435ed5801170e8213a914498afb",
+    "description": "Allows adding multiple tags to a container or containers.  If no container(s) are provided then the current container is assumed.",
+    "draft_mode": false,
+    "inputs": [
+        {
+            "contains_type": [],
+            "description": "A mandatory list of tag strings",
+            "input_type": "list",
+            "name": "tag_list",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [
+                "phantom container id"
+            ],
+            "description": "An optional ID of another container",
+            "input_type": "item",
+            "name": "container_id",
+            "placeholder": ""
+        },
+        {
+            "contains_type": [],
+            "description": "An optional list of container IDs",
+            "input_type": "list",
+            "name": "container_list",
+            "placeholder": ""
+        }
+    ],
+    "outputs": [
+        {
+            "contains_type": [],
+            "data_path": "status",
+            "description": "The result of the custom function -success or failure"
+        },
+        {
+            "contains_type": [],
+            "data_path": "message",
+            "description": "Result message from the custom function"
+        }
+    ],
+    "platform_version": "5.3.1.84890",
+    "python_version": "3"
+}
