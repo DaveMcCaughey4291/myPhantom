@@ -25,6 +25,16 @@ def power_add_tag(tag_list=None, container_id=None, container_list=None, **kwarg
             "message": "Custom function failed - no tag list provided"
         }
         return outputs
+    else:
+        try:
+            tags = json.loads(tag_list)
+        except Exception as e:
+            phantom.debug(f'Unable to parse tag list.  Message: {e}')
+            outputs = {
+                "status": "failure",
+                "message": "Custom function failed - invalid list of tags provided"
+            }
+            return outputs
     
     success_count = 0
     failure_count = 0
