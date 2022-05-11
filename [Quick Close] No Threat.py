@@ -11,13 +11,13 @@ from datetime import datetime, timedelta
 def on_start(container):
     phantom.debug('on_start() called')
 
-    # call 'set_status_add_comment_1' block
-    set_status_add_comment_1(container=container)
+    # call 'add_comment_set_status_1' block
+    add_comment_set_status_1(container=container)
 
     return
 
-def set_status_add_comment_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
-    phantom.debug("set_status_add_comment_1() called")
+def add_comment_set_status_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("add_comment_set_status_1() called")
 
     ################################################################################
     ## Custom Code Start
@@ -29,10 +29,38 @@ def set_status_add_comment_1(action=None, success=None, container=None, results=
     ## Custom Code End
     ################################################################################
 
-    phantom.set_status(container=container, status="closed")
     phantom.comment(container=container, comment="Closing ticket as no threat found.")
+    phantom.set_status(container=container, status="closed")
 
     container = phantom.get_container(container.get('id', None))
+
+    power_add_tag_2(container=container)
+
+    return
+
+
+def power_add_tag_2(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+    phantom.debug("power_add_tag_2() called")
+
+    parameters = []
+
+    parameters.append({
+        "tag_list": "[\"linux\",\"windows\"]",
+        "container_id": None,
+        "container_list": None,
+    })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.custom_function(custom_function="myPhantom/power_add_tag", parameters=parameters, name="power_add_tag_2")
 
     return
 
