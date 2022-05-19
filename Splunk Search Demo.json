@@ -35,7 +35,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "f19ca672c8f3a745b3f9c4e84fa7f39c4e8efa6c",
+            "hash": "cdb91906159048ad86d33a02a7589ca2710bd145",
             "nodes": {
                 "0": {
                     "data": {
@@ -86,7 +86,9 @@
                         "functionName": "run_query_1",
                         "id": "2",
                         "parameters": {
+                            "attach_result": true,
                             "command": "search",
+                            "end_time": "-24h",
                             "query": "index=main host=uf1 COMMAND=sudo latest=-24h"
                         },
                         "requiredParameters": [
@@ -296,7 +298,7 @@
         "schema": "5.0.6",
         "version": "5.3.1.84890"
     },
-    "create_time": "2022-05-19T10:41:18.094855+00:00",
+    "create_time": "2022-05-19T10:55:07.803441+00:00",
     "draft_mode": false,
     "labels": [
         "events"

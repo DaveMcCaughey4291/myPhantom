@@ -26,6 +26,8 @@ def run_query_1(action=None, success=None, container=None, results=None, handle=
     parameters.append({
         "command": "search",
         "query": "index=main host=uf1 COMMAND=sudo latest=-24h",
+        "end_time": "-24h",
+        "attach_result": True,
     })
 
     ################################################################################
