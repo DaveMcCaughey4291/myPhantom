@@ -95,6 +95,7 @@
                     "targetPort": "3_in"
                 }
             ],
+            "hash": "f2899f0cfb3143d2690c5dd60f113a22c26f5a01",
             "nodes": {
                 "0": {
                     "data": {
@@ -110,7 +111,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 280,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -184,6 +185,9 @@
                             "customName": "Close ticket",
                             "customNameId": 0,
                             "join": [],
+                            "notRequiredJoins": [
+                                "lookup_whois"
+                            ],
                             "refreshNotableData": true
                         },
                         "functionId": 1,
@@ -499,7 +503,7 @@
         "schema": "5.0.12",
         "version": "6.2.2.134"
     },
-    "create_time": "2024-07-17T10:17:12.281930+00:00",
+    "create_time": "2024-07-17T13:42:53.617340+00:00",
     "draft_mode": false,
     "labels": [
         "test-event"
