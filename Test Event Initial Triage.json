@@ -23,6 +23,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_2",
                             "index": 1
                         }
                     ],
@@ -42,6 +43,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_1",
                             "index": 0
                         }
                     ],
@@ -54,6 +56,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_4",
                             "index": 1
                         }
                     ],
@@ -66,6 +69,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_3",
                             "index": 0
                         }
                     ],
@@ -78,6 +82,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_5",
                             "index": 0
                         }
                     ],
@@ -95,7 +100,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "f2899f0cfb3143d2690c5dd60f113a22c26f5a01",
+            "hash": "3c37be28b5d431243bf1af9057efb74524bb82a2",
             "nodes": {
                 "0": {
                     "data": {
@@ -111,7 +116,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 280,
-                    "y": -1.2789769243681803e-13
+                    "y": -1.9184653865522705e-13
                 },
                 "1": {
                     "data": {
@@ -147,6 +152,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_1",
                                 "customName": "open",
                                 "display": "If",
                                 "logic": "and",
@@ -162,6 +168,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_2",
                                 "customName": "closed",
                                 "display": "Else",
                                 "logic": "and",
@@ -382,6 +389,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_3",
                                 "customName": "IP artefacts found",
                                 "display": "If",
                                 "logic": "and",
@@ -397,6 +405,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_4",
                                 "customName": "no IP artefacts found",
                                 "display": "Else",
                                 "logic": "and",
@@ -433,6 +442,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_5",
                                 "customName": "IP Artefacts",
                                 "logic": "and"
                             }
@@ -501,11 +511,11 @@
         "output_spec": null,
         "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.15",
-        "version": "6.3.1.178"
+        "python_version": "3.9",
+        "schema": "5.0.19",
+        "version": "6.4.1.356"
     },
-    "create_time": "2024-07-17T13:42:53.617340+00:00",
+    "create_time": "2025-06-06T15:38:42.642119+00:00",
     "draft_mode": false,
     "labels": [
         "test-event"

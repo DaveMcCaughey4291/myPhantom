@@ -29,6 +29,10 @@ def open_check(action=None, success=None, container=None, results=None, handle=N
         conditions=[
             [status_value, "!=", "closed"]
         ],
+        conditions_dps=[
+            ["container:status", "!=", "closed"]
+        ],
+        name="open_check:condition_1",
         delimiter=None)
 
     # call connected blocks if condition 1 matched
@@ -46,15 +50,9 @@ def open_check(action=None, success=None, container=None, results=None, handle=N
 def join_close_ticket(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("join_close_ticket() called")
 
-    # if the joined function has already been called, do nothing
-    if phantom.get_run_data(key="join_close_ticket_called"):
-        return
-
-    # save the state that the joined function has now been called
-    phantom.save_run_data(key="join_close_ticket_called", value="close_ticket")
-
-    # call connected block "close_ticket"
-    close_ticket(container=container, handle=handle)
+    if phantom.completed(action_names=["lookup_whois"]):
+        # call connected block "close_ticket"
+        close_ticket(container=container, handle=handle)
 
     return
 
@@ -110,6 +108,10 @@ def ip_check(action=None, success=None, container=None, results=None, handle=Non
         conditions=[
             ["artifact:*.cef.destinationAddress", "!=", ""]
         ],
+        conditions_dps=[
+            ["artifact:*.cef.destinationAddress", "!=", ""]
+        ],
+        name="ip_check:condition_1",
         delimiter=None)
 
     # call connected blocks if condition 1 matched
@@ -131,6 +133,9 @@ def ip_filter(action=None, success=None, container=None, results=None, handle=No
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
+            ["artifact:*.cef.destinationAddress", "!=", ""]
+        ],
+        conditions_dps=[
             ["artifact:*.cef.destinationAddress", "!=", ""]
         ],
         name="ip_filter:condition_1",
