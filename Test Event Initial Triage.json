@@ -100,7 +100,7 @@
                     "targetPort": "3_in"
                 }
             ],
-            "hash": "3c37be28b5d431243bf1af9057efb74524bb82a2",
+            "hash": "d597636936ef96a31bd091e3e9fd4f72ec3714af",
             "nodes": {
                 "0": {
                     "data": {
@@ -116,7 +116,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 280,
-                    "y": -1.9184653865522705e-13
+                    "y": -2.5579538487363607e-13
                 },
                 "1": {
                     "data": {
@@ -194,7 +194,7 @@
                             "customNameId": 0,
                             "join": [],
                             "notRequiredJoins": [
-                                "lookup_whois"
+                                "7"
                             ],
                             "refreshNotableData": true
                         },
@@ -202,6 +202,22 @@
                         "functionName": "close_ticket",
                         "id": "3",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -309,6 +325,22 @@
                         "functionName": "already_closed_comment",
                         "id": "4",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -478,6 +510,22 @@
                         "functionName": "lookup_whois",
                         "id": "7",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -495,6 +543,7 @@
                                 "field": "ip"
                             }
                         ],
+                        "tab": "byConnector",
                         "type": "action"
                     },
                     "errors": {},
@@ -511,11 +560,11 @@
         "output_spec": null,
         "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3.9",
-        "schema": "5.0.19",
-        "version": "6.4.1.356"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2025-06-06T15:38:42.642119+00:00",
+    "create_time": "2026-02-06T14:28:08.774504+00:00",
     "draft_mode": false,
     "labels": [
         "test-event"
