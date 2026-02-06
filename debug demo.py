@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,7 +17,8 @@ def on_start(container):
 
     return
 
-def code_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def code_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("code_1() called")
 
     ################################################################################
@@ -33,9 +35,12 @@ def code_1(action=None, success=None, container=None, results=None, handle=None,
     ## Custom Code End
     ################################################################################
 
+    phantom.save_block_result(key="code_1_called", value="True")
+
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

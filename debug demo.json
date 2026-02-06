@@ -21,7 +21,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "6909a71763391f7666cfab5b95076720fbd0c4fd",
+            "hash": "dbf87872237289ee69a50bd2221468feeec72258",
             "nodes": {
                 "0": {
                     "data": {
@@ -35,8 +35,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 20,
-                    "y": 0
+                    "warnings": {},
+                    "x": 19.999999999999986,
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -52,8 +53,9 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 20,
-                    "y": 296
+                    "warnings": {},
+                    "x": 19.999999999999986,
+                    "y": 295.9999999999999
                 },
                 "2": {
                     "data": {
@@ -71,6 +73,7 @@
                     "id": "2",
                     "type": "code",
                     "userCode": "\n    phdebug = phantom.debug\n    phantom.debug = lambda x: phdebug(f\"{datetime.now} [Stupid Phantom] - {x}\")\n    \n    phantom.debug(\"This is a test\")\n    phantom.debug(\"so is this\")\n\n",
+                    "warnings": {},
                     "x": 0,
                     "y": 148
                 }
@@ -79,12 +82,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.1.84890"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2022-05-20T15:27:16.942407+00:00",
+    "create_time": "2026-02-06T12:03:11.653958+00:00",
     "draft_mode": false,
     "labels": [
         "*"
