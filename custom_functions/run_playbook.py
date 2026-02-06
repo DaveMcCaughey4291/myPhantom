@@ -68,7 +68,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
         phantom.debug(f'Making a HTTP POST request to {runUrl} with parameters: {params}')
         response = phantom.requests.post(runUrl, json=params, verify=False)
         phantom.debug(f'Phantom returned status code: {response.status_code} and content: {response.text}')
-        if response.status_code == phantom.requests.codes.ok:
+        if response.status_code == 200:
             responseJSON = response.json()
             run_id = responseJSON['playbook_run_id']
             run_ids.append(run_id)
@@ -103,7 +103,7 @@ def run_playbook(container_list=None, playbook_name=None, scope=None, scope_list
             phantom.debug(f'Making a HTTP POST request to {runUrl} with parameters: {params}')
             response = phantom.requests.post(runUrl, json=params, verify=False)
             phantom.debug(f'Phantom returned status code: {response.status_code} and content: {response.text}')
-            if response.status_code == phantom.requests.codes.ok:
+            if response.status_code == 200:
                 responseJSON = response.json()
                 run_id = responseJSON['playbook_run_id']
                 run_ids.append(run_id)

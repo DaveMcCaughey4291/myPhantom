@@ -1,6 +1,6 @@
 {
-    "create_time": "2022-05-09T13:34:07.919200+00:00",
-    "custom_function_id": "51bbb0fecb9cc6d1fa531d4f34f1ec03ed614e6b",
+    "create_time": "2026-02-06T12:24:55.313566+00:00",
+    "custom_function_id": "e6c8adb55e53091ac1fccb91a297daef72b32b96",
     "description": "Run the specified playbook on the given container(s).  You can use either the single value \"container\" or the list option \"container_list\" for multiple containers.  The scope parameter can be \"all\" or \"new\".  If not supplied then \"new\" will be assumed.",
     "draft_mode": false,
     "inputs": [
@@ -69,6 +69,7 @@
             "description": "A list of JSON objects with the container ID and error message"
         }
     ],
-    "platform_version": "5.3.1.84890",
-    "python_version": "3"
+    "outputs_type": "item",
+    "platform_version": "7.1.0.225",
+    "python_version": "3.13"
 }
