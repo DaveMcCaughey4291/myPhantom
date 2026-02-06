@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,7 +17,8 @@ def on_start(container):
 
     return
 
-def tag_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def tag_check(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("tag_check() called")
 
     # check for 'if' condition 1
@@ -24,7 +26,12 @@ def tag_check(action=None, success=None, container=None, results=None, handle=No
         container=container,
         conditions=[
             ["artifact:*.cef.tag_name", "!=", ""]
-        ])
+        ],
+        conditions_dps=[
+            ["artifact:*.cef.tag_name", "!=", ""]
+        ],
+        name="tag_check:condition_1",
+        delimiter=",")
 
     # call connected blocks if condition 1 matched
     if found_match_1:
@@ -37,7 +44,8 @@ def tag_check(action=None, success=None, container=None, results=None, handle=No
     return
 
 
-def tag_filter(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def tag_filter(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("tag_filter() called")
 
     # collect filtered artifact ids and results for 'if' condition 1
@@ -46,7 +54,11 @@ def tag_filter(action=None, success=None, container=None, results=None, handle=N
         conditions=[
             ["artifact:*.cef.tag_name", "!=", ""]
         ],
-        name="tag_filter:condition_1")
+        conditions_dps=[
+            ["artifact:*.cef.tag_name", "!=", ""]
+        ],
+        name="tag_filter:condition_1",
+        delimiter=",")
 
     # call connected blocks if filtered artifacts or results
     if matched_artifacts_1 or matched_results_1:
@@ -55,7 +67,8 @@ def tag_filter(action=None, success=None, container=None, results=None, handle=N
     return
 
 
-def add_no_tag_comment(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def add_no_tag_comment(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_no_tag_comment() called")
 
     ################################################################################
@@ -73,7 +86,8 @@ def add_no_tag_comment(action=None, success=None, container=None, results=None, 
     return
 
 
-def playbook_tagging_demo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def playbook_tagging_demo_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("playbook_tagging_demo_1() called")
 
     filtered_artifact_0_data_tag_filter = phantom.collect2(container=container, datapath=["filtered-data:tag_filter:condition_1:artifact:*.cef.tag_name"])
@@ -100,6 +114,7 @@ def playbook_tagging_demo_1(action=None, success=None, container=None, results=N
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

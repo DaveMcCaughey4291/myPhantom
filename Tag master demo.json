@@ -16,6 +16,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_1",
                             "index": 0
                         }
                     ],
@@ -28,6 +29,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_2",
                             "index": 1
                         }
                     ],
@@ -40,6 +42,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_3",
                             "index": 0
                         }
                     ],
@@ -64,7 +67,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "fa01137484d75f93d8f9d9b97d831a549eb4a607",
+            "hash": "a45b210072c1ba338605a40da4d1e1c47f834ad8",
             "nodes": {
                 "0": {
                     "data": {
@@ -78,8 +81,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 190,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -95,6 +99,7 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "warnings": {},
                     "x": 190,
                     "y": 656
                 },
@@ -103,6 +108,8 @@
                         "advanced": {
                             "customName": "tag check",
                             "customNameId": 0,
+                            "delimiter": ",",
+                            "delimiter_enabled": true,
                             "join": []
                         },
                         "conditions": [
@@ -116,6 +123,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_1",
                                 "customName": "tag found",
                                 "display": "If",
                                 "logic": "and",
@@ -130,6 +138,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_2",
                                 "customName": "no tag found",
                                 "display": "Else",
                                 "logic": "and",
@@ -144,6 +153,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
+                    "warnings": {},
                     "x": 250,
                     "y": 148
                 },
@@ -152,6 +162,8 @@
                         "advanced": {
                             "customName": "tag filter",
                             "customNameId": 0,
+                            "delimiter": ",",
+                            "delimiter_enabled": true,
                             "join": []
                         },
                         "conditions": [
@@ -165,6 +177,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_3",
                                 "customName": "tag filter",
                                 "logic": "and"
                             }
@@ -177,6 +190,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "filter",
+                    "warnings": {},
                     "x": 60,
                     "y": 328
                 },
@@ -190,6 +204,31 @@
                         "functionId": 1,
                         "functionName": "add_no_tag_comment",
                         "id": "5",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -240,6 +279,7 @@
                     "errors": {},
                     "id": "5",
                     "type": "utility",
+                    "warnings": {},
                     "x": 340,
                     "y": 508
                 },
@@ -259,6 +299,31 @@
                                 "deduplicate": false
                             }
                         },
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "playbookName": "tagging_demo",
                         "playbookRepo": 6,
                         "playbookRepoName": "myPhantom",
@@ -269,6 +334,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "playbook",
+                    "warnings": {},
                     "x": 0,
                     "y": 508
                 }
@@ -277,12 +343,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.1.84890"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2022-05-16T14:20:52.317150+00:00",
+    "create_time": "2026-02-06T14:23:23.715211+00:00",
     "draft_mode": false,
     "labels": [
         "*"
