@@ -18,7 +18,7 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def get_playbook_owner(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+def get_playbook_owner(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("get_playbook_owner() called")
 
     get_playbook_owner__user_id = None
@@ -51,8 +51,10 @@ def get_playbook_owner(action=None, success=None, container=None, results=None, 
     ## Custom Code End
     ################################################################################
 
-    phantom.save_run_data(key="get_playbook_owner:user_id", value=json.dumps(get_playbook_owner__user_id))
-    phantom.save_run_data(key="get_playbook_owner:username", value=json.dumps(get_playbook_owner__username))
+    phantom.save_block_result(key="get_playbook_owner:user_id", value=json.dumps(get_playbook_owner__user_id))
+    phantom.save_block_result(key="get_playbook_owner:username", value=json.dumps(get_playbook_owner__username))
+
+    phantom.save_block_result(key="get_playbook_owner_called", value="True")
 
     prompt_2(container=container)
 
@@ -88,7 +90,7 @@ def prompt_2(action=None, success=None, container=None, results=None, handle=Non
     return
 
 @phantom.playbook_block()
-def format_note(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+def format_note(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_note() called")
 
     template = """User {0} said {1}\n"""
@@ -117,7 +119,7 @@ def format_note(action=None, success=None, container=None, results=None, handle=
 
 
 @phantom.playbook_block()
-def add_note_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+def add_note_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_note_1() called")
 
     format_note = phantom.get_format_data(name="format_note")

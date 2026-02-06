@@ -42,7 +42,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "679832a3bf5c2a59d0b89f687dc01b097deebd9e",
+            "hash": "3ec5dbc38acab72949409680e5cadaaedc249b08",
             "nodes": {
                 "0": {
                     "data": {
@@ -56,8 +56,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
-                    "x": 20,
-                    "y": 0
+                    "warnings": {},
+                    "x": 19.999999999999986,
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -73,7 +74,8 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
-                    "x": 20,
+                    "warnings": {},
+                    "x": 19.999999999999986,
                     "y": 772
                 },
                 "3": {
@@ -97,6 +99,7 @@
                     "id": "3",
                     "type": "code",
                     "userCode": "\n    pb_info = phantom.get_playbook_info()\n    phantom.debug(f\"Found playbook info: {str(pb_info)}\")\n    \n    user_id = int(pb_info[0]['effective_user_id'])\n    phantom.debug(f\"Found user ID: {user_id}\")\n    \n    # Build owner details URL\n    url = phantom.build_phantom_rest_url('ph_user', user_id)\n    phantom.debug(f\"Making HTTP GET request to: {url}\")\n    response = phantom.requests.get(url, verify=False)\n    phantom.debug(f\"Response from Phantom: {response}\")\n    owner_info = response.json()\n    \n    username = owner_info['username']\n    phantom.debug(f\"Found username: {username}\")\n    \n    get_playbook_owner__user_id = user_id\n    get_playbook_owner__username = username\n\n",
+                    "warnings": {},
                     "x": 0,
                     "y": 148
                 },
@@ -106,9 +109,10 @@
                         "advanced": {
                             "join": []
                         },
-                        "approver": "",
+                        "approver": {},
                         "functionId": 2,
                         "functionName": "prompt_2",
+                        "hasExternalApprover": false,
                         "id": "4",
                         "message": "Hello {0}.",
                         "parameters": [
@@ -117,10 +121,13 @@
                         "responseTime": 30,
                         "responses": [
                             {
+                                "required": true,
                                 "responsePrompt": "Something",
                                 "responseType": "message"
                             }
                         ],
+                        "samlEnabled": false,
+                        "samlGroupsAllowed": [],
                         "type": "prompt"
                     },
                     "errors": {
@@ -128,6 +135,7 @@
                     },
                     "id": "4",
                     "type": "prompt",
+                    "warnings": {},
                     "x": 80,
                     "y": 296
                 },
@@ -151,6 +159,7 @@
                     "errors": {},
                     "id": "5",
                     "type": "format",
+                    "warnings": {},
                     "x": 0,
                     "y": 476
                 },
@@ -162,6 +171,31 @@
                         "functionId": 1,
                         "functionName": "add_note_1",
                         "id": "6",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -255,6 +289,7 @@
                     "errors": {},
                     "id": "6",
                     "type": "utility",
+                    "warnings": {},
                     "x": 0,
                     "y": 624
                 }
@@ -263,12 +298,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.8",
-        "version": "5.3.5.97812"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2023-09-11T08:15:54.079457+00:00",
+    "create_time": "2026-02-06T14:18:47.678666+00:00",
     "draft_mode": false,
     "labels": [
         "*"
