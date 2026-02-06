@@ -27,6 +27,10 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         conditions=[
             ["artifact:*.cef.destinationHostName", "!=", ""]
         ],
+        conditions_dps=[
+            ["artifact:*.cef.destinationHostName", "!=", ""]
+        ],
+        name="decision_1:condition_1",
         delimiter=None)
 
     # call connected blocks if condition 1 matched
@@ -116,6 +120,9 @@ def filter_1(action=None, success=None, container=None, results=None, handle=Non
     matched_artifacts_1, matched_results_1 = phantom.condition(
         container=container,
         conditions=[
+            ["artifact:*.cef.destinationHostName", "!=", ""]
+        ],
+        conditions_dps=[
             ["artifact:*.cef.destinationHostName", "!=", ""]
         ],
         name="filter_1:condition_1",

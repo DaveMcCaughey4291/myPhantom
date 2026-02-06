@@ -16,6 +16,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_1",
                             "index": 0
                         }
                     ],
@@ -28,6 +29,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_2",
                             "index": 1
                         }
                     ],
@@ -47,6 +49,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_3",
                             "index": 0
                         }
                     ],
@@ -78,7 +81,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "aefdc6528d5cba9a9a3ec5499e73bc3a011daac1",
+            "hash": "c2b5ae697fe95a01cfe37e6729dd4fe158ff4bab",
             "nodes": {
                 "0": {
                     "data": {
@@ -94,7 +97,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 190,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -128,6 +131,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_1",
                                 "customName": "MV",
                                 "display": "If",
                                 "logic": "and",
@@ -142,6 +146,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_2",
                                 "customName": "No MV",
                                 "display": "Else",
                                 "logic": "and",
@@ -169,6 +174,22 @@
                         "functionName": "add_comment_1",
                         "id": "3",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -240,6 +261,22 @@
                         "functionName": "add_comment_2",
                         "id": "4",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -341,6 +378,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_3",
                                 "customName": "host",
                                 "logic": "and"
                             }
@@ -366,6 +404,22 @@
                         "functionName": "add_note_3",
                         "id": "7",
                         "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
                             "enabled": false,
                             "exitAfterUnit": "m",
                             "exitAfterValue": 10,
@@ -478,11 +532,11 @@
         "output_spec": null,
         "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.12",
-        "version": "6.2.2.134"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2024-07-22T10:14:57.372473+00:00",
+    "create_time": "2026-02-06T12:30:48.851782+00:00",
     "draft_mode": false,
     "labels": [
         "*"
