@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,7 +17,8 @@ def on_start(container):
 
     return
 
-def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("decision_1() called")
 
     # check for 'if' condition 1
@@ -24,7 +26,12 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         container=container,
         conditions=[
             ["playbook_input:tag", "==", "linux"]
-        ])
+        ],
+        conditions_dps=[
+            ["playbook_input:tag", "==", "linux"]
+        ],
+        name="decision_1:condition_1",
+        delimiter=",")
 
     # call connected blocks if condition 1 matched
     if found_match_1:
@@ -36,7 +43,12 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         container=container,
         conditions=[
             ["playbook_input:tag", "==", "windows"]
-        ])
+        ],
+        conditions_dps=[
+            ["playbook_input:tag", "==", "windows"]
+        ],
+        name="decision_1:condition_2",
+        delimiter=",")
 
     # call connected blocks if condition 2 matched
     if found_match_2:
@@ -46,7 +58,8 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     return
 
 
-def add_linux_tag(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def add_linux_tag(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_linux_tag() called")
 
     ################################################################################
@@ -66,7 +79,8 @@ def add_linux_tag(action=None, success=None, container=None, results=None, handl
     return
 
 
-def add_windows_tag(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def add_windows_tag(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_windows_tag() called")
 
     ################################################################################
@@ -86,6 +100,7 @@ def add_windows_tag(action=None, success=None, container=None, results=None, han
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

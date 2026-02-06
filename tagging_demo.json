@@ -16,6 +16,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_1",
                             "index": 0
                         }
                     ],
@@ -28,6 +29,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_2",
                             "index": 1
                         }
                     ],
@@ -52,7 +54,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "6b05d958f31eb58273bd6a86b831a91cd2ff0696",
+            "hash": "7284b5112019509fe753006d119ada013b9f2d54",
             "nodes": {
                 "0": {
                     "data": {
@@ -66,8 +68,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 190,
-                    "y": 0
+                    "y": -6.394884621840902e-14
                 },
                 "1": {
                     "data": {
@@ -83,12 +86,15 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "warnings": {},
                     "x": 190,
-                    "y": 476
+                    "y": 475.9999999999999
                 },
                 "2": {
                     "data": {
                         "advanced": {
+                            "delimiter": ",",
+                            "delimiter_enabled": true,
                             "join": []
                         },
                         "conditions": [
@@ -102,6 +108,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_1",
                                 "customName": "linux tag",
                                 "display": "If",
                                 "logic": "and",
@@ -117,6 +124,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_2",
                                 "customName": "windows tag",
                                 "display": "Else If",
                                 "logic": "and",
@@ -131,6 +139,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "decision",
+                    "warnings": {},
                     "x": 250,
                     "y": 148
                 },
@@ -145,6 +154,31 @@
                         "functionId": 1,
                         "functionName": "add_linux_tag",
                         "id": "3",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -191,6 +225,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "utility",
+                    "warnings": {},
                     "x": 0,
                     "y": 328
                 },
@@ -205,6 +240,31 @@
                         "functionId": 2,
                         "functionName": "add_windows_tag",
                         "id": "4",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -251,6 +311,7 @@
                     "errors": {},
                     "id": "4",
                     "type": "utility",
+                    "warnings": {},
                     "x": 340,
                     "y": 328
                 }
@@ -265,12 +326,13 @@
             }
         ],
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "data",
-        "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.1.84890"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2022-05-16T14:12:45.971877+00:00",
+    "create_time": "2026-02-06T14:21:42.960671+00:00",
     "draft_mode": false,
     "labels": [
         "*"
