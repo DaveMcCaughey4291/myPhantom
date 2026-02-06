@@ -28,7 +28,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "15e13c9fef2c5a7053fa75141512d0e9df7a0f1d",
+            "hash": "a4d64955a80a50a9c4e127b80ad99dc90745fe8f",
             "nodes": {
                 "0": {
                     "data": {
@@ -42,8 +42,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 1020,
-                    "y": 419.9999999999999
+                    "y": 419.9999999999998
                 },
                 "1": {
                     "data": {
@@ -59,6 +60,7 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "warnings": {},
                     "x": 1000,
                     "y": 1000
                 },
@@ -81,6 +83,7 @@
                     "errors": {},
                     "id": "2",
                     "type": "format",
+                    "warnings": {},
                     "x": 1000,
                     "y": 567.9999999999999
                 },
@@ -92,6 +95,31 @@
                         "functionId": 1,
                         "functionName": "add_note_1",
                         "id": "3",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -185,6 +213,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "utility",
+                    "warnings": {},
                     "x": 1000,
                     "y": 715.9999999999999
                 }
@@ -193,12 +222,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.8",
-        "version": "5.3.5.97812"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2022-10-21T13:27:07.963207+00:00",
+    "create_time": "2026-02-06T14:17:18.993868+00:00",
     "draft_mode": false,
     "labels": [
         "events"

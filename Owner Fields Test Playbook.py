@@ -18,7 +18,7 @@ def on_start(container):
     return
 
 @phantom.playbook_block()
-def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+def format_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("format_1() called")
 
     template = """Owner: {0}   \nOwner_name: {1}   \nOwner_id: {2}   """
@@ -48,7 +48,7 @@ def format_1(action=None, success=None, container=None, results=None, handle=Non
 
 
 @phantom.playbook_block()
-def add_note_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+def add_note_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("add_note_1() called")
 
     format_1 = phantom.get_format_data(name="format_1")
