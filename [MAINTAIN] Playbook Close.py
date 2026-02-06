@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timedelta
 
 
+@phantom.playbook_block()
 def on_start(container):
     phantom.debug('on_start() called')
 
@@ -16,7 +17,8 @@ def on_start(container):
 
     return
 
-def get_custom_list_copy_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def get_custom_list_copy_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("get_custom_list_copy_1() called")
 
     parameters = []
@@ -40,7 +42,8 @@ def get_custom_list_copy_1(action=None, success=None, container=None, results=No
     return
 
 
-def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def decision_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("decision_1() called")
 
     # check for 'if' condition 1
@@ -48,7 +51,12 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
         container=container,
         conditions=[
             ["get_custom_list_copy_1:custom_function_result.data.status", "==", "success"]
-        ])
+        ],
+        conditions_dps=[
+            ["get_custom_list_copy_1:custom_function_result.data.status", "==", "success"]
+        ],
+        name="decision_1:condition_1",
+        delimiter=",")
 
     # call connected blocks if condition 1 matched
     if found_match_1:
@@ -61,7 +69,8 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     return
 
 
-def custom_function_failed_comment(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def custom_function_failed_comment(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("custom_function_failed_comment() called")
 
     ################################################################################
@@ -79,7 +88,8 @@ def custom_function_failed_comment(action=None, success=None, container=None, re
     return
 
 
-def run_playbook_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def run_playbook_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("run_playbook_3() called")
 
     get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
@@ -89,10 +99,11 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
     parameters = []
 
     parameters.append({
-        "scope": "all",
-        "scope_list": None,
-        "playbook_name": "myPhantom/[Quick Close] No Threat",
         "container_list": get_custom_list_copy_1_data_list_of_items,
+        "playbook_name": "myPhantom/[Quick Close] No Threat",
+        "scope": None,
+        "scope_list": None,
+        "container": None,
     })
 
     ################################################################################
@@ -110,7 +121,8 @@ def run_playbook_3(action=None, success=None, container=None, results=None, hand
     return
 
 
-def power_add_tag_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, **kwargs):
+@phantom.playbook_block()
+def power_add_tag_4(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("power_add_tag_4() called")
 
     get_custom_list_copy_1__result = phantom.collect2(container=container, datapath=["get_custom_list_copy_1:custom_function_result.data.list_of_items"])
@@ -140,6 +152,7 @@ def power_add_tag_4(action=None, success=None, container=None, results=None, han
     return
 
 
+@phantom.playbook_block()
 def on_finish(container, summary):
     phantom.debug("on_finish() called")
 

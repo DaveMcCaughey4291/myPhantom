@@ -23,6 +23,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_2",
                             "index": 1
                         }
                     ],
@@ -42,6 +43,7 @@
                 {
                     "conditions": [
                         {
+                            "conditionKey": "condition_key_1",
                             "index": 0
                         }
                     ],
@@ -66,7 +68,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "7e1e42f9d8eaa93b08c2014b332b612fe3d106af",
+            "hash": "3763ac2c2fcdd5184a13a20289e4867d91384fb5",
             "nodes": {
                 "0": {
                     "data": {
@@ -80,8 +82,9 @@
                     "errors": {},
                     "id": "0",
                     "type": "start",
+                    "warnings": {},
                     "x": 190,
-                    "y": -6.394884621840902e-14
+                    "y": -1.2789769243681803e-13
                 },
                 "1": {
                     "data": {
@@ -97,6 +100,7 @@
                     "id": "1",
                     "type": "end",
                     "userCode": "\n    # This function is called after all actions are completed.\n    # summary of all the action and/or all details of actions\n    # can be collected here.\n\n    # summary_json = phantom.get_summary()\n    # if 'result' in summary_json:\n        # for action_result in summary_json['result']:\n            # if 'action_run_id' in action_result:\n                # action_results = phantom.get_action_results(action_run_id=action_result['action_run_id'], result_data=False, flatten=False)\n                # phantom.debug(action_results)\n\n",
+                    "warnings": {},
                     "x": 200,
                     "y": 740
                 },
@@ -113,11 +117,36 @@
                         "functionId": 3,
                         "functionName": "run_playbook_3",
                         "id": "11",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
                             "run_playbook": {
-                                "description": "Run the specified playbook on the given containers",
+                                "description": "Run the specified playbook on the given container(s).  You can use either the single value \"container\" or the list option \"container_list\" for multiple containers.  The scope parameter can be \"all\" or \"new\".  If not supplied then \"new\" will be assumed.",
                                 "fields": [
                                     {
                                         "dataTypes": [],
@@ -158,6 +187,18 @@
                                         "placeholder": "",
                                         "renderType": "datapath",
                                         "required": false
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "phantom container id"
+                                        ],
+                                        "description": "Single container ID",
+                                        "inputType": "item",
+                                        "label": "container",
+                                        "name": "container",
+                                        "placeholder": "",
+                                        "renderType": "datapath",
+                                        "required": false
                                     }
                                 ],
                                 "label": "run_playbook",
@@ -167,9 +208,12 @@
                         "utilityType": "custom_function",
                         "values": {
                             "run_playbook": {
-                                "container_list": "get_custom_list_copy_1:custom_function_result.data.list_of_items",
+                                "container": null,
+                                "container_list": [
+                                    "get_custom_list_copy_1:custom_function_result.data.list_of_items"
+                                ],
                                 "playbook_name": "myPhantom/[Quick Close] No Threat",
-                                "scope": "all",
+                                "scope": null,
                                 "scope_list": null
                             }
                         }
@@ -177,6 +221,7 @@
                     "errors": {},
                     "id": "11",
                     "type": "utility",
+                    "warnings": {},
                     "x": 340,
                     "y": 484
                 },
@@ -193,6 +238,31 @@
                         "functionId": 4,
                         "functionName": "power_add_tag_4",
                         "id": "12",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -248,6 +318,7 @@
                     "errors": {},
                     "id": "12",
                     "type": "utility",
+                    "warnings": {},
                     "x": 340,
                     "y": 632
                 },
@@ -264,6 +335,31 @@
                         "functionId": 1,
                         "functionName": "get_custom_list_copy_1",
                         "id": "2",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "type": "utility",
                         "utilities": {
@@ -295,12 +391,15 @@
                     "errors": {},
                     "id": "2",
                     "type": "utility",
+                    "warnings": {},
                     "x": 170,
                     "y": 148
                 },
                 "3": {
                     "data": {
                         "advanced": {
+                            "delimiter": ",",
+                            "delimiter_enabled": true,
                             "join": []
                         },
                         "conditions": [
@@ -314,6 +413,7 @@
                                     }
                                 ],
                                 "conditionIndex": 0,
+                                "conditionKey": "condition_key_1",
                                 "customName": "success",
                                 "display": "If",
                                 "logic": "and",
@@ -329,6 +429,7 @@
                                     }
                                 ],
                                 "conditionIndex": 1,
+                                "conditionKey": "condition_key_2",
                                 "customName": "failure",
                                 "display": "Else",
                                 "logic": "and",
@@ -343,6 +444,7 @@
                     "errors": {},
                     "id": "3",
                     "type": "decision",
+                    "warnings": {},
                     "x": 250,
                     "y": 296
                 },
@@ -357,6 +459,31 @@
                         "functionId": 2,
                         "functionName": "custom_function_failed_comment",
                         "id": "8",
+                        "loop": {
+                            "conditions": [
+                                {
+                                    "comparisons": [
+                                        {
+                                            "comparisonKey": "comparison_key_0",
+                                            "op": "==",
+                                            "param": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "conditionIndex": 0,
+                                    "conditionKey": "condition_key_0",
+                                    "logic": "and",
+                                    "type": "if"
+                                }
+                            ],
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
                         "selectMore": false,
                         "tab": "apis",
                         "type": "utility",
@@ -407,7 +534,8 @@
                     "errors": {},
                     "id": "8",
                     "type": "utility",
-                    "x": -1.4210854715202004e-14,
+                    "warnings": {},
+                    "x": 0,
                     "y": 475.99999999999994
                 }
             },
@@ -415,12 +543,13 @@
         },
         "input_spec": null,
         "output_spec": null,
+        "playbook_trigger": "artifact_created",
         "playbook_type": "automation",
-        "python_version": "3",
-        "schema": "5.0.6",
-        "version": "5.3.1.84890"
+        "python_version": "3.13",
+        "schema": "5.0.23",
+        "version": "7.1.0.225"
     },
-    "create_time": "2022-05-11T11:29:06.684660+00:00",
+    "create_time": "2026-02-06T12:29:01.868654+00:00",
     "draft_mode": false,
     "labels": [
         "*"
