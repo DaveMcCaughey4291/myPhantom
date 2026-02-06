@@ -1,6 +1,6 @@
 {
-    "create_time": "2022-04-29T08:31:11.831538+00:00",
-    "custom_function_id": "06579af7f7802d632ba23579b5d91b2aff9e1bce",
+    "create_time": "2026-02-06T12:25:34.801090+00:00",
+    "custom_function_id": "aab29f043e9fa1ca024ed685284904c3f25b1e1e",
     "description": "This custom function retrieves the elements of a custom list.",
     "draft_mode": false,
     "inputs": [
@@ -29,6 +29,7 @@
             "description": "A list of the elements from the custom list"
         }
     ],
-    "platform_version": "5.3.1.84890",
-    "python_version": "3"
+    "outputs_type": "item",
+    "platform_version": "7.1.0.225",
+    "python_version": "3.13"
 }
